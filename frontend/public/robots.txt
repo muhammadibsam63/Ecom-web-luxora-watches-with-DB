@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /account
+Disallow: /checkout
+Disallow: /cart
+
+# Serve /sitemap.xml from the backend (see README: proxy /sitemap.xml to the API)
+Sitemap: https://YOUR-DOMAIN/sitemap.xml

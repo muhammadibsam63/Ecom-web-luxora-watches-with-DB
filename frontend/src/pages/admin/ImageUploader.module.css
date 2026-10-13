@@ -1,0 +1,197 @@
+.wrap { display: flex; flex-direction: column; gap: 14px; }
+
+.limitNote {
+  font-size: 0.72rem;
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated-2);
+}
+
+.fieldGroupLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-gold-soft);
+}
+
+.urlRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.urlRow input[type='url'] {
+  flex: 1;
+  min-width: 0;
+}
+
+.urlPreview {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+  background: var(--color-bg-elevated-3);
+}
+
+.urlPreviewPlaceholder {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px dashed var(--color-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.fileInputLabel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-elevated);
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  overflow: hidden;
+}
+.fileInputLabel span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fileInputLabel:hover { border-color: var(--color-gold-soft); color: var(--color-text-primary); }
+
+.removeFieldBtn {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-tertiary);
+}
+.removeFieldBtn:hover { color: var(--color-error); border-color: var(--color-error); }
+
+.addFieldBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  background: transparent;
+  border: 1px dashed var(--color-border-strong);
+  color: var(--color-gold-soft);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+}
+.addFieldBtn:hover:not(:disabled) { border-color: var(--color-gold); color: var(--color-gold); }
+.addFieldBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.hint {
+  font-size: 0.68rem;
+  color: var(--color-text-tertiary);
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 20px;
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--dur-fast), background-color var(--dur-fast);
+}
+.dropzone:hover, .dropzone[data-active='true'] {
+  border-color: var(--color-gold);
+  background: var(--color-bg-elevated-3);
+  color: var(--color-gold);
+}
+.dropzone span { font-size: 0.85rem; }
+.dropzone small { font-size: 0.72rem; }
+
+.progressTrack {
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  background: var(--color-gold);
+  transition: width 0.2s ease;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  cursor: grab;
+}
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.primaryBadge {
+  position: absolute;
+  top: 4px; left: 4px;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.thumbActions {
+  position: absolute;
+  top: 4px; right: 4px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+}
+.thumb:hover .thumbActions { opacity: 1; }
+.thumbActions button {
+  width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+}
+.thumbActions button:hover { color: var(--color-gold); }
+
+.dragHandle {
+  position: absolute;
+  bottom: 4px; right: 4px;
+  color: rgba(255,255,255,0.7);
+}

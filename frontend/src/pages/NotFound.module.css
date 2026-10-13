@@ -1,0 +1,18 @@
+.wrap {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 0 24px;
+}
+.code {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--color-gold);
+  line-height: 1;
+}
+.wrap h1 { font-size: 1.5rem; }
+.wrap p { color: var(--color-text-secondary); }

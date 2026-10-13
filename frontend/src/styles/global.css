@@ -1,0 +1,223 @@
+/* ==========================================================
+   LUXORA WATCHES — Global Design Tokens & Base Styles
+   ========================================================== */
+
+:root {
+  /* Type */
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Layout */
+  --container-max: 1440px;
+  --gutter: clamp(20px, 4vw, 64px);
+  --nav-height: 84px;
+
+  /* Motion */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.2s;
+  --dur-medium: 0.45s;
+  --dur-slow: 0.9s;
+
+  /* Radii — kept minimal & consistent; luxury restraint, not rounded-card chrome */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  color-scheme: dark;
+
+  /* ---- Dark theme (default) — Midnight Obsidian + Graphite + Champagne ---- */
+  --color-bg: #08090b;
+  --color-bg-elevated: #111317;
+  --color-bg-elevated-2: #17191d;
+  --color-bg-elevated-3: #202329;
+  --color-text-primary: #f3f0e8;
+  --color-text-secondary: #9b9da3;
+  --color-text-tertiary: #6e7178;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-gold: #c7b58a;
+  --color-gold-deep: #a9966a;
+  --color-gold-soft: rgba(199, 181, 138, 0.18);
+  --color-success: #7fae82;
+  --color-error: #c9776b;
+  --color-overlay: rgba(5, 6, 7, 0.75);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-bg: #faf8f3;
+  --color-bg-elevated: #ffffff;
+  --color-bg-elevated-2: #f1ede4;
+  --color-bg-elevated-3: #e8e2d4;
+  --color-text-primary: #1a1a1c;
+  --color-text-secondary: #5c5e63;
+  --color-text-tertiary: #8a8c91;
+  --color-border: rgba(20, 20, 22, 0.1);
+  --color-border-strong: rgba(20, 20, 22, 0.18);
+  --color-gold: #a9966a;
+  --color-gold-deep: #8a7650;
+  --color-gold-soft: rgba(169, 150, 106, 0.16);
+  --color-success: #4f7a53;
+  --color-error: #a1483b;
+  --color-overlay: rgba(250, 248, 243, 0.78);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--dur-medium) var(--ease-standard), color var(--dur-medium) var(--ease-standard);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 62ch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-text-primary);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* ---- Shared utility classes ---- */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 32px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard),
+              opacity var(--dur-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+.btn-primary:hover:not(:disabled) { opacity: 0.85; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+.btn-gold:hover:not(:disabled) { opacity: 0.85; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-bg-elevated) 25%, var(--color-bg-elevated-2) 37%, var(--color-bg-elevated) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* Scrollbar (webkit) — subtle, not chunky */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 8px;
+  border: 2px solid var(--color-bg);
+}

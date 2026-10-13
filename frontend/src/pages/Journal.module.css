@@ -1,0 +1,14 @@
+.page { padding-top: calc(var(--nav-height) + 40px); padding-bottom: 100px; }
+.header { margin-bottom: 56px; }
+.header h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-top: 8px; }
+
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 40px; }
+.card { display: block; }
+.image { border-radius: var(--radius-md); margin-bottom: 18px; }
+.date { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+.title { font-family: var(--font-display); font-size: 1.4rem; margin: 8px 0; max-width: 32ch; }
+.excerpt { font-size: 0.9rem; }
+
+@media (max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+}

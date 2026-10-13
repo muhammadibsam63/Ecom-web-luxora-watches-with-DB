@@ -1,0 +1,185 @@
+.nav {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: calc(100% - 32px);
+  max-width: 1360px;
+  height: 66px;
+  border-radius: 999px;
+  border: 1px solid var(--color-gold-soft);
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  transition: box-shadow var(--dur-medium) var(--ease-standard), border-color var(--dur-medium) var(--ease-standard), top var(--dur-medium) var(--ease-standard);
+}
+
+.nav[data-scrolled='true'] {
+  border-color: var(--color-gold);
+  top: 10px;
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 10px 0 22px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.logoDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 8px 1px var(--color-gold-soft);
+  flex-shrink: 0;
+}
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+.logoMain {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-primary);
+}
+.logoSub {
+  margin-top: 2px;
+  font-size: 0.52rem;
+  letter-spacing: 0.32em;
+  color: var(--color-gold);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+  justify-content: center;
+}
+
+.link {
+  position: relative;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  padding: 6px 0;
+  transition: color var(--dur-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+.link:hover { color: var(--color-text-primary); }
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-medium) var(--ease-luxury);
+}
+.link:hover::after { transform: scaleX(1); }
+
+.linkActive {
+  color: var(--color-text-primary);
+}
+.linkActive::after { transform: scaleX(1); }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  border-radius: 50%;
+  transition: background-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard);
+}
+.iconBtn:hover {
+  color: var(--color-gold);
+  background: var(--color-bg-elevated-2);
+}
+
+.signInBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 22px;
+  margin-left: 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-deep));
+  color: var(--color-bg);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: transform var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard);
+}
+.signInBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(199, 181, 138, 0.35);
+}
+
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  font-size: 0.6rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-bg);
+}
+
+.menuBtn {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .links { display: none; }
+  .menuBtn { display: inline-flex; }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    top: 10px;
+    width: calc(100% - 20px);
+    height: 58px;
+    border-radius: 999px;
+  }
+  .inner { padding: 0 6px 0 16px; gap: 10px; }
+  .logoMain { font-size: 1.05rem; }
+  .logoSub { letter-spacing: 0.26em; }
+  .signInBtn { padding: 7px 16px; font-size: 0.7rem; margin-left: 2px; }
+  .iconBtn { width: 32px; height: 32px; }
+}
